@@ -1,0 +1,34 @@
+﻿@model Company
+
+@{
+    ViewData["Title"] = "Edit Company Data";
+}
+
+<h2>Edit Company data</h2>
+
+@using (Html.BeginForm("Edit", "Company", FormMethod.Post))
+{
+    <div class="form-group col-3">
+        @Html.LabelFor(s => s.CompanyName, "Comany name")
+        @Html.TextBoxFor(s => s.CompanyName, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-3">
+        @Html.LabelFor(s => s.City, "City")
+        @Html.TextBoxFor(s => s.City, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-3">
+        @Html.LabelFor(s => s.Street, "Street")
+        @Html.TextBoxFor(s => s.Street, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-3">
+        @Html.LabelFor(s => s.Address, "House number")
+        @Html.TextBoxFor(s => s.Address, new { @class = "form-control" })
+    </div>
+    @*<div class="form-group">
+        @Html.LabelFor(m => m.Company.Company_Id, "Select Company")
+        @Html.DropDownListFor(m => m.House.Company_Id, new SelectList(Model.Companies, "Id", "CompanyName"), "", new { @class = "form-control" })*@
+    //</div>
+    //@Html.HiddenFor(m => m.Company[0].Id)
+    <button type="submit" class="btn btn-primary">Save changes</button>
+    @Html.ActionLink("Cancel", "Index", "Athletes", null, new { @class = "btn btn-secondary" })
+}

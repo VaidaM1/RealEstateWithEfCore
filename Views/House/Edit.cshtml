@@ -1,0 +1,42 @@
+﻿@model RealEstate_with_efcore.Dtos.CreateHouse
+
+@{
+    ViewData["Title"] = "Edit Apartment Data";
+}
+
+<h2>Edit Apartment data</h2>
+
+@using (Html.BeginForm("Edit", "House", FormMethod.Post))
+{
+    <div class="form-group col-3">
+        @Html.LabelFor(s => s.House.City, "City")
+        @Html.TextBoxFor(s => s.House.City, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-3">
+        @Html.LabelFor(s => s.House.Street, "Street")
+        @Html.TextBoxFor(s => s.House.Street, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-3">
+        @Html.LabelFor(s => s.House.Address, "House number")
+        @Html.TextBoxFor(s => s.House.Address, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-3">
+        @Html.LabelFor(s => s.House.FlatFloor, "Flat Floor")
+        @Html.TextBoxFor(s => s.House.FlatFloor, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-3">
+        @Html.LabelFor(s => s.House.Area, "Area")
+        @Html.TextBoxFor(s => s.House.Area, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-3">
+        @Html.LabelFor(m => m.Companies, "Select Company")
+        @Html.DropDownListFor(m => m.Companies, new SelectList(Model.Companies, "Id", "CompanyName"), "", new { @class = "form-control" })
+    </div>
+    <div class="form-group col-3">
+        @Html.LabelFor(m => m.Brokers, "Select Broker")
+        @Html.DropDownListFor(m => m.Brokers, new SelectList(Model.Brokers, "Id", "Name"), "", new { @class = "form-control" })
+    </div>
+    //@Html.HiddenFor(m => m.Houses[0].Id)
+    <button type="submit" class="btn btn-primary">Save changes</button>
+    @Html.ActionLink("Cancel", "Index", "Houses", null, new { @class = "btn btn-secondary" })
+}

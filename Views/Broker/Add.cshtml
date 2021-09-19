@@ -1,0 +1,24 @@
+﻿@model RealEstate_with_efcore.Dtos.CreateBroker
+
+<h2>Add new broker</h2>
+
+@using (Html.BeginForm("Add", "Broker", FormMethod.Post))
+{
+    <div class="form-row">
+        <div class="form-group col-3">
+            @Html.LabelFor(c => c.Broker.Name, "Name")
+            @Html.TextBoxFor(c => c.Broker.Name, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-3">
+            @Html.LabelFor(c => c.Broker.Surname, "Surname")
+            @Html.TextBoxFor(c => c.Broker.Surname, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-3">
+            @Html.LabelFor(m => m.Broker.Companies, "Select Company")
+            @Html.DropDownListFor(m => m.CompanyIds, new MultiSelectList(Model.Companies, "Id", "CompanyName"), "", new { @class = "form-control" })
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+    @Html.ActionLink("Cancel", "Index", "Broker", null, new { @class = "btn btn-secondary" })
+}

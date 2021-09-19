@@ -1,0 +1,38 @@
+﻿@model RealEstate_with_efcore.Dtos.CreateHouse
+
+<h2>Add new house</h2>
+
+@using (Html.BeginForm("Add", "House", FormMethod.Post))
+{
+<div class="form-row">
+    <div class="form-group col-3">
+        @Html.LabelFor(s => s.House.City, "City")
+        @Html.TextBoxFor(s => s.House.City, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-3">
+        @Html.LabelFor(s => s.House.Street, "Street")
+        @Html.TextBoxFor(s => s.House.Street, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-3">
+        @Html.LabelFor(s => s.House.Address, "House number")
+        @Html.TextBoxFor(s => s.House.Address, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-3">
+        @Html.LabelFor(s => s.House.FlatFloor, "Flat Floor")
+        @Html.TextBoxFor(s => s.House.FlatFloor, new { @class = "form-control" })
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-3">
+        @Html.LabelFor(s => s.House.Area, "Area")
+        @Html.TextBoxFor(s => s.House.Area, new { @class = "form-control" })
+    </div>
+    @*<div class="form-group  col-3">
+        @Html.LabelFor(m => m.Companies, "Select Company")
+        @Html.DropDownListFor(m => m.CompanyId, new MultiSelectList(Model.Companies, "Id", "CompanyName"), "", new { @class = "form-control" })*@
+    @*</div>*@
+   
+</div>
+<button type="submit" class="btn btn-primary">Add</button>
+    @Html.ActionLink("Cancel", "Index", "House", null, new { @class = "btn btn-secondary" })
+    }

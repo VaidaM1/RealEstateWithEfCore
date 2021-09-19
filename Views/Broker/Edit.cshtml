@@ -1,0 +1,26 @@
+﻿@model RealEstate_with_efcore.Dtos.CreateBroker
+
+@{
+    ViewData["Title"] = "Edit Broker Data";
+}
+
+<h2>Edit Broker:</h2>
+
+@using (Html.BeginForm("Edit", "Broker", FormMethod.Post))
+{
+    <div class="form-group col-3">
+        @Html.LabelFor(s => s.Broker.Name, "Name")
+        @Html.TextBoxFor(s => s.Broker.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-3">
+        @Html.LabelFor(s => s.Broker.Surname, "Surname")
+        @Html.TextBoxFor(s => s.Broker.Surname, new { @class = "form-control" })
+    </div>
+    <div class="form-group  col-3">
+        @Html.LabelFor(m => m.CompanyIds, "Select Company")
+        @Html.DropDownListFor(m => m.CompanyIds, new SelectList(Model.Companies, "Id", "CompanyName"), "", new { @class = "form-control" })
+    </div>
+    // @Html.HiddenFor(m => m.Broker.Id)
+    <button type="submit" class="btn btn-primary">Save changes</button>
+    @Html.ActionLink("Cancel", "Index", "Brokers", null, new { @class = "btn btn-secondary" })
+}

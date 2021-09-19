@@ -1,0 +1,51 @@
+﻿@model RealEstate_with_efcore.Dtos.HouseIndex
+
+<h4 class="d-inline-block mb-4">Sort Apartments:</h4>
+
+@Html.ActionLink("Add new house", "Add", "House", null, new { @class = "btn btn-primary float-right" })
+
+
+
+@if (Model.Houses.Count == 0)
+{
+    <p>There are no any house.</p>
+}
+else
+{
+    <h4 class="d-inline-block mb-4">List of Apartments</h4>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th class="text-center">Id</th>
+                <th class="text-center">City</th>
+                <th class="text-center">Street</th>
+                <th class="text-center">Address</th>
+                <th class="text-center">FlatFloor</th>
+                <th class="text-center">Area</th>
+                <th class="text-center">Company</th>
+                <th class="text-center">Broker</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var house in @Model.Houses)
+            {
+                <tr>
+                    <td class="text-center">@house.Id</td>
+                    <td class="text-center">@house.City</td>
+                    <td class="text-center">@house.Street</td>
+                    <td class="text-center">@house.Address</td>
+                    <td class="text-center">@house.FlatFloor</td>
+                    <td class="text-center">@house.Area</td>
+
+
+                    <td class="text-center align-middle">
+                        @Html.ActionLink("Edit", "Edit", "House", new { id = $"{house.Id}" }, new { @class = "btn btn-outline-warning", @style = "color:black" })
+                        @Html.ActionLink("Delete", "Delete", "House", new { id = house.Id }, new { @class = "btn btn-outline-danger", @style = "color:black" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
